@@ -6,13 +6,11 @@ const destPath = path.join(__dirname, 'files-copy');
 
 const copy = async (from, to) => {
   try {
-    const files = await fs.readdir(to);
-    files.forEach(async (f) => {
-      await fs.unlink(path.join(to, f));
-    });
+    await fs.rm(to, { recursive: true });
   } catch (e) {
-    console.error('');
+    // to do
   }
+
   await fs.mkdir(to, { recursive: true });
   const files = await fs.readdir(from);
   files.forEach(async (f) => {
