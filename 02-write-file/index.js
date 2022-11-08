@@ -8,6 +8,10 @@ const rl = readline.createInterface({ input, output });
 const ws = fs.createWriteStream(path.join(__dirname, 'text.txt'));
 
 rl.question('Hello, input some text, pls.\n', (text) => {
+  if (text === 'exit') {
+    rl.close();
+    return;
+  } 
   ws.write(text);
 });
 
